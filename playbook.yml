@@ -12,7 +12,9 @@
     selinux: policy=targeted state=permissive
 
   - name: disable selinux on boot
-    command: sed -i "s:SELINUX=enforcing:SELINUX=permissive:" /etc/sysconfig/selinux
+    lineinfile: dest={{item}} regexp=^SELINUX= line=SELINUX=permissive
+    with_items:
+    - /etc/sysconfig/selinux
 
   - name: install pkgs
     yum: name={{item}} state=installed
@@ -20,22 +22,26 @@
     - php-mysql
     - php-gd
     - php-mcrypt
+    - php-cli
     - httpd
     - mod_ssl
     - unzip
     - mariadb-server
+    - MySQL-python
 
   - name: download opencart to /tmp
     get_url: url={{oc_download_url}} dest=/tmp/opencart-{{oc_version}}.zip
 
   - name: unzip opencart in /tmp
-    unarchive: src=/tmp/opencart-{{oc_version}}.zip dest=/tmp copy=no
+    unarchive: src=/tmp/opencart-{{oc_version}}.zip dest=/tmp copy=no creates=/tmp/opencart-{{oc_version}}
 
   - name: move opencart to /var/www/html
-    copy: remote_src=true src=/tmp/opencart-{{oc_version}}/upload/ dest=/var/www/html
+    command: mv /tmp/opencart-{{oc_version}}/upload/* /var/www/html
+    args:
+      creates: /var/www/html/admin
 
   - name: touch config-dest.php
-    copy: content="" dest=/var/www/html/{{item}}
+    copy: content="" dest=/var/www/html/{{item}} force=no
     with_items:
     - config.php
     - admin/config.php
@@ -55,7 +61,7 @@
     - admin/config.php
 
   - name: start webserver and mysql
-    service: name={{item}} state=started enable=true
+    service: name={{item}} state=started enabled=true
     with_items:
     - httpd
     - mariadb
@@ -63,3 +69,7 @@
   - name: create opencart db in mysql
     mysql_db: name=opencart state=present
 
+  - name: install opencart
+    command: php cli_install.php install --db_hostname localhost --db_username root --db_database opencart --db_driver mysqli --username admin --password admin --email root@localhost --http_server http://localhost:8080/
+    args:
+      chdir: /var/www/html/install

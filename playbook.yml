@@ -4,107 +4,12 @@
   become: true
 
   vars:
-    oc_version: 2.1.0.2
-    oc_download_url: https://codeload.github.com/opencart/opencart/zip/{{oc_version}}
-    oc_db_host: localhost
-    oc_db_user: root
-    oc_db_pass: "''"
-    oc_db_db: opencart
-    oc_db_drv: mysqli
-    oc_web_user: admin
-    oc_web_pass: admin
-    oc_email: root@localhost
-    oc_web_url: http://localhost:8080/
+    oc_images:
+    - name: logo.png
+    - name: avocado-heart.jpg
+      url: http://img2.timeinc.net/health/images/slides/avocado-heart-400x400.jpg
+    - name: tomato.jpg
+      url: https://timewellness.files.wordpress.com/2012/09/tomato.jpg?w=480&h=320&crop=1
 
-  tasks:
-  - name: disable selinux
-    selinux: policy=targeted state=permissive
-
-  - name: disable selinux on boot
-    lineinfile: dest={{item}} regexp=^SELINUX= line=SELINUX=permissive
-    with_items:
-    - /etc/sysconfig/selinux
-
-  - name: install pkgs
-    yum: name={{item}} state=installed
-    with_items:
-    - php
-    - php-mysql
-    - php-gd
-    - php-mcrypt
-    - php-cli
-    - httpd
-    - mod_ssl
-    - unzip
-    - mariadb-server
-    - MySQL-python
-
-  - name: download opencart to /tmp
-    get_url: url={{oc_download_url}} dest=/tmp/opencart-{{oc_version}}.zip
-
-  - name: unzip opencart in /tmp
-    unarchive: src=/tmp/opencart-{{oc_version}}.zip dest=/tmp copy=no creates=/tmp/opencart-{{oc_version}}
-
-  - name: upload opencart into /var/www/html
-    command: "cp -a /tmp/opencart-{{oc_version}}/upload/{{item}} /var/www/html"
-    args:
-      creates: /var/www/html/{{item}}
-    with_items:
-    - catalog
-    - crossdomain.xml
-    - image
-    - index.php
-    - install
-    - php.ini
-    - system
-    - admin
-
-  - name: touch config-dest.php
-    copy: content="" dest=/var/www/html/{{item}} force=no
-    with_items:
-    - config.php
-    - admin/config.php
-
-  - name: chmod g+w and chown apache:apache
-    file: path=/var/www/html/{{item}} owner=apache group=apache mode=0775
-    with_items:
-    - image
-    - image/cache
-    - image/catalog
-    - system/storage/cache
-    - system/storage/logs
-    - system/storage/download
-    - system/storage/upload
-    - system/storage/modification
-
-  - name: chmod g+w and chown apache:apache
-    file: path=/var/www/html/{{item}} owner=apache group=apache mode=0664
-    with_items:
-    - config.php
-    - admin/config.php
-
-  - name: start webserver and mysql
-    service: name={{item}} state=started enabled=true
-    with_items:
-    - httpd
-    - mariadb
-
-  - name: create opencart db in mysql
-    mysql_db: name=opencart state=present
-
-  - name: hmm
-    stat: path=/var/www/html/install
-    register: st
-
-  - name: hmm2
-    debug: var=st
-
-  - name: install opencart
-    command: php cli_install.php install --db_hostname {{oc_db_host}} --db_username {{oc_db_user}} --db_password {{oc_db_pass}} --db_database {{oc_db_db}} --db_driver {{oc_db_drv}} --username {{oc_web_user}} --password {{oc_web_pass}} --email {{oc_email}} --http_server {{oc_web_url}}
-    args:
-      chdir: /var/www/html/install
-    when: st.stat.exists != "true"
-
-  - name: remove opencart install dir
-    file: state=absent dest=/var/www/html/install
-
+  roles:
+  - opencart

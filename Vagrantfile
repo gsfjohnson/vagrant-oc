@@ -2,6 +2,7 @@
 # vi: set ft=ruby :
 
 Vagrant.configure(2) do |config|
+  #config.vm.box = "gsfjohnson/centos67"
   config.vm.box = "gsfjohnson/centos71"
 
   config.vm.define "oc" do |v|

@@ -4,6 +4,9 @@
   become: true
 
   vars:
+    oc_install_php: true
+    oc_install_mysqld: true
+    oc_install_httpd: true
     oc_images:
     - name: logo.png
     - name: avocado-heart.jpg

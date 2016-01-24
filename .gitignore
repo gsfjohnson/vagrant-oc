@@ -1,3 +1,6 @@
 *.swp
 .vagrant
 roles
+id_rsa
+gitconfig
+oc-ext-*

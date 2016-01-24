@@ -10,6 +10,47 @@
       url: http://img2.timeinc.net/health/images/slides/avocado-heart-400x400.jpg
     - name: tomato.jpg
       url: https://timewellness.files.wordpress.com/2012/09/tomato.jpg?w=480&h=320&crop=1
+    - name: bell-peppers.jpg
+      url: http://www.finecooking.com/assets/uploads/posts/5086/ING-bell-pepper_sql.jpg
+    - name: bok-choy.jpg
+      url: http://blog.foodswithjudes.com/wp-content/uploads/2011/01/Boc-choy.png
+    - name: celery.jpg
+      url: http://urbanfarmcolorado.com/wp-content/uploads/2015/01/celery.jpg
+    - name: lettuce-romaine.jpg
+      url: http://www.onlyfoods.net/wp-content/uploads/2013/06/Romaine-Lettuce.jpg
+    - name: beans-pinto-bushs.jpg
+      url: http://www.bushbeans.com/sites/default/files/styles/product_can_thumb_2x/public/product/604-2944-Can-Pinto.png?itok=lTH-D51Z
+    - name: noodles-spaghetti-barilla.jpg
+      url: http://www.chromedelivery.com/wp-content/uploads/2015/01/barilla-spaghetti.jpg
+    - name: spice-islands-allspice-ground.png
+      url: http://res.cloudinary.com/do0cra8m4/image/upload/v1443139720/spice-island/product-variant-packaging/allspice-ground_iyfukx_arc11h.png
+    - name: spice-islands-basil.png
+      url: http://res.cloudinary.com/do0cra8m4/image/upload/v1443139720/spice-island/product-variant-packaging/sweetbasil-chopped_dqntjv_rgckmt.png
+    - name: spice-islands-bayleaf-whole.png
+      url: http://res.cloudinary.com/do0cra8m4/image/upload/v1443139719/spice-island/product-variant-packaging/bayleaf-wholeleafs_jt0ls1_kiif9u.png
+    - name: spice-islands-beaumonde-ground.png
+      url: http://res.cloudinary.com/do0cra8m4/image/upload/v1443140600/spice-island/product-variant-packaging/beaumonde-ground_czt6f8_wrrenx.png
+    - name: spice-islands-cardamon-ground.png
+      url: http://res.cloudinary.com/do0cra8m4/image/upload/v1443139720/spice-island/product-variant-packaging/cardamom-ground_jxpis1_t4qpum.png
+    - name: spice-islands-celerysalt-ground.png
+      url: http://res.cloudinary.com/do0cra8m4/image/upload/v1443139720/spice-island/product-variant-packaging/celerysalt-ground_i3mbuh_u8efnc.png
+    - name: spice-islands-chipotle-chile.png
+      url: http://res.cloudinary.com/do0cra8m4/image/upload/v1443140600/spice-island/product-variant-packaging/chipoltlechilipowder-ground_grreon_ctqf56.png
+    - name: spice-islands-italian-herb-crushed.png
+      url: http://res.cloudinary.com/do0cra8m4/image/upload/v1443140600/spice-island/product-variant-packaging/italianherbseasoning-crushed_ywcksg_lcgxbh.png
+    - name: spice-islands-mustard-ground.png
+      url: http://res.cloudinary.com/do0cra8m4/image/upload/v1443140600/spice-island/product-variant-packaging/mustard-ground_atr1vn_h7gpmo.png
+    - name: spice-islands-onion-powder.png
+      url: http://res.cloudinary.com/do0cra8m4/image/upload/v1443140600/spice-island/product-variant-packaging/onionpowder-ground_htalfz_uxelif.png
+    - name: spice-islands-oregano-crushed.png
+      url: http://res.cloudinary.com/do0cra8m4/image/upload/v1443140600/spice-island/product-variant-packaging/oregano-crushed_fpt1c6_fttwt2.png
+    - name: spice-islands-sriracha-ground.png
+      url: http://res.cloudinary.com/do0cra8m4/image/upload/v1443140600/spice-island/product-variant-packaging/srirachaspicyseasoning-ground_qlede3_at4sqt.png
+    - name: spice-islands-paprika-ground.png
+      url: http://res.cloudinary.com/do0cra8m4/image/upload/v1443140600/spice-island/product-variant-packaging/paprika-ground_fzyzkl_h188nl.png
+    - name: spice-islands-red-pepper-crushed.png
+      url: http://res.cloudinary.com/do0cra8m4/image/upload/v1443140600/spice-island/product-variant-packaging/crushedredpepper-crushed_qbviet_wwyaxa.png
+
 
   roles:
   - opencart
